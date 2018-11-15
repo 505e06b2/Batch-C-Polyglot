@@ -1,1 +1,2 @@
-tcc\tcc -x c -run main.bat
+tcc\tcc -x c -run "%~1"
+pause

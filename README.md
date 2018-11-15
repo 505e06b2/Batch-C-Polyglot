@@ -1,4 +1,6 @@
+
 # Polyglot
+### compiles_itself.bat
 What this batch file does:
 * Compiles as C source (`cc -x c main.bat`)
 * Runs as a "standard" batch file to compile and run itself as C
@@ -16,7 +18,20 @@ What it relies on:
 		* `! variables` parse whenever the line is encountered; even on arbitrary input
 		* `! variables` doesn't work with pipes well
 		* `% variables` are parsed before anything is executed on the line
-	* `set` echos the contents to stdout when not setting the variable
-	* `goto :eof` stops execution and returns (back to a `call`) if needed
+	* `set var` echos the contents of var to stdout
+	* `goto :eof` stops execution of current script
 	* `<%0 (set /p var=)` gets the first line of a file from stdin and puts it into a `var`
-	* `::` comments don't ever echo
+
+
+### echos_string.bat
+What this batch file does:
+* echos text, then runs itself as a C program which does the same
+
+What it relies on:
+* C
+	* Functions are implicitly int if no type specified
+	* Stdlib functions can be used as long as they're defined
+	* The preprocessor can alter the syntax of the source, anywhere in the source
+* Batch
+	* Labels can be named arbitrarily
+	* `goto :eof` stops execution of current script
